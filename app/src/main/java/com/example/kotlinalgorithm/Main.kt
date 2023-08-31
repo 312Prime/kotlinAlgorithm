@@ -8,22 +8,14 @@ fun main() {
     val lines = mutableListOf<String>()
     BufferedReader(FileReader(inputFile)).lines().forEach { lines.add(it) }
 
-    fun solution(cards1: Array<String>, cards2: Array<String>, goal: Array<String>): String {
-        var cnt1 = 0
-        var cnt2 = 0
-        goal.forEach {
-            if (cards1.getOrNull(cnt1) == it) cnt1++
-            else if (cards2.getOrNull(cnt2) == it) cnt2++
-            else return "No"
-        }
-        return "Yes"
+    fun solution(players: Array<String>, callings: Array<String>): Array<String> {
+
+        return players
     }
 
-    print(
-        solution(
-            lines[0].removeSurrounding("[", "]").split(", ").toTypedArray(),
-            lines[1].removeSurrounding("[", "]").split(", ").toTypedArray(),
-            lines[2].removeSurrounding("[", "]").split(", ").toTypedArray()
-        )
-    )
+    solution(
+        lines[0].removeSurrounding("[", "]").split(", ").toTypedArray(),
+        lines[1].removeSurrounding("[", "]").split(", ").toTypedArray(),
+    ).forEach { print(it) }
+    println()
 }
