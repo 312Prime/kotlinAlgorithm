@@ -1,3 +1,2 @@
-["mumu", "soe", "poe", "kai", "mine"]
-["kai", "kai", "mine", "mine"]
-["mumu", "kai", "mine", "soe", "poe"]
+[1, 7, 1, 2]
+"1223330333221"
