@@ -8,33 +8,32 @@ fun main() {
     val lines = mutableListOf<String>()
     BufferedReader(FileReader(inputFile)).lines().forEach { lines.add(it) }
 
-    fun solution(weights: IntArray): Long {
-        var answer: Long = 0
-        val weightList = weights.sorted().toIntArray()
+    fun solution(logs: Array<String>): Int {
+        var answer: Int = logs.size
+        val logNames = listOf("team_name : ", "application_name : ", "error_level : ", "message : ")
+        val nonAlphabeticalPattern = "[^a-zA-Z]".toRegex()
 
-        for (i in weightList.indices) for (j in i + 1 until weightList.size) {
-            if (weightList[i] == weightList[j]) {
-                answer++
-                continue
+        Back@ for (i in logs.indices) {
+            if (logs[i].length > 100) continue@Back
+            if (nonAlphabeticalPattern.containsMatchIn(logs[i].first().toString())) continue@Back
+
+            for (j in logNames.indices) {
+                if (logs[i].indexOf(logNames[j]) == -1) continue@Back
+                if (j != logNames.size - 1 && logs[i].indexOf(logNames[j + 1]) == -1) continue@Back
+                val ids = logs[i].substring(
+                    logs[i].indexOf(logNames[j]) + logNames[j].length,
+                    if (j == logNames.size - 1) logs[i].length
+                    else (logs[i].indexOf(logNames[j + 1]) - 1)
+                )
+                if (nonAlphabeticalPattern.containsMatchIn(ids)) continue@Back
             }
-            if (weightList[i] * 2 == weightList[j]) {
-                answer++
-                continue
-            }
-            if (weightList[i] * 3 == weightList[j] * 2) {
-                answer++
-                continue
-            }
-            if (weightList[i] * 4 == weightList[j] * 3) {
-                answer++
-                continue
-            }
+            answer--
         }
         return answer
     }
 
     solution(
-        lines[0].removeSurrounding("[", "]").split(", ").map { it.toInt() }.toIntArray()
+        lines[0].removeSurrounding("[", "]").split(", ").toTypedArray()
     ).also { print(it) }
     println()
 }
