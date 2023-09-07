@@ -1,4 +1,6 @@
-package com.example.kotlinalgorithm
+package com.example.kotlinalgo
+
+rithm
 
 import java.io.*
 
@@ -8,26 +10,26 @@ fun main() {
     val lines = mutableListOf<String>()
     BufferedReader(FileReader(inputFile)).lines().forEach { lines.add(it) }
 
-    fun solution(logs: Array<String>): Int {
-        var answer: Int = logs.size
-        val logNames = listOf("team_name : ", "application_name : ", "error_level : ", "message : ")
-        val nonAlphabeticalPattern = "[^a-zA-Z]".toRegex()
+    fun solution(maps: Array<String>): IntArray {
+        var answer: IntArray = intArrayOf()
 
-        Back@ for (i in logs.indices) {
-            if (logs[i].length > 100) continue@Back
-            if (nonAlphabeticalPattern.containsMatchIn(logs[i].first().toString())) continue@Back
+        for (i in maps.indices) {
+            for (j in 0 until maps[0].length) {
+                var count = 0
+                if (maps[i][j] == 'X') continue
+                if (i != 0 && maps.getOrNull(i - 1)?.get(j) != 'X') {
+                    count++
+                }
+                if (j != 0 && maps[i].getOrNull(j - 1) != 'X') {
+                    count++
+                }
 
-            for (j in logNames.indices) {
-                if (logs[i].indexOf(logNames[j]) == -1) continue@Back
-                if (j != logNames.size - 1 && logs[i].indexOf(logNames[j + 1]) == -1) continue@Back
-                val ids = logs[i].substring(
-                    logs[i].indexOf(logNames[j]) + logNames[j].length,
-                    if (j == logNames.size - 1) logs[i].length
-                    else (logs[i].indexOf(logNames[j + 1]) - 1)
-                )
-                if (nonAlphabeticalPattern.containsMatchIn(ids)) continue@Back
+                when(count){
+                    0->
+//                        1->
+                }
+
             }
-            answer--
         }
         return answer
     }
