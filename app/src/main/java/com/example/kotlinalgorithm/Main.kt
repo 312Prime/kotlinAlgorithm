@@ -8,16 +8,19 @@ fun main() {
     val lines = mutableListOf<String>()
     BufferedReader(FileReader(inputFile)).lines().forEach { lines.add(it) }
 
+    // 다익스트라 알고리즘
     fun solution(n: Int, roads: Array<IntArray>, sources: IntArray, destination: Int): IntArray {
         var answer: IntArray = intArrayOf()
         val cMap = mutableMapOf<Int, Int>()
 
         for (i in 1..n) cMap[i] = -1
         cMap[destination] = 0
+        // 길 초기화
         roads.filter { it.first() == destination || it.last() == destination }.forEach {
             if (it.first() == destination) cMap[it.last()] = 1
             if (it.last() == destination) cMap[it.first()] = 1
         }
+
         cMap.toList().sortedBy { it.second }.forEach {
             it.first
         }
