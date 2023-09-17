@@ -8,35 +8,34 @@ fun main() {
     val lines = mutableListOf<String>()
     BufferedReader(FileReader(inputFile)).lines().forEach { lines.add(it) }
 
-    // 다익스트라 알고리즘
-    fun solution(n: Int, roads: Array<IntArray>, sources: IntArray, destination: Int): IntArray {
-        var answer: IntArray = intArrayOf()
-        val cMap = mutableMapOf<Int, Int>()
+    fun solution(maps: Array<String>): Int {
+        val isVisitedList = mutableListOf<MutableList<Boolean>>()
+        var roomS = Pair(0, 0)
+        var roomL = Pair(0, 0)
+        var roomE = Pair(0, 0)
+        val queue = mutableListOf<Pair<Int, Int>>()
 
-        for (i in 1..n) cMap[i] = -1
-        cMap[destination] = 0
-        // 길 초기화
-        roads.filter { it.first() == destination || it.last() == destination }.forEach {
-            if (it.first() == destination) cMap[it.last()] = 1
-            if (it.last() == destination) cMap[it.first()] = 1
+        for (i in maps.indices) {
+            isVisitedList.add(MutableList(maps[0].length) { false })
+        }
+        for (i in maps.indices) for (j in maps[0].indices) {
+            when (maps[i][j]) {
+                'S' -> roomS = Pair(i, j)
+                'L' -> roomL = Pair(i, j)
+                'E' -> roomE = Pair(i, j)
+            }
+        }
+        queue.add(roomS)
+        while (queue.isNotEmpty()) {
+            maps[queue.removeLast().first][queue.removeLast().second]
         }
 
-        cMap.toList().sortedBy { it.second }.forEach {
-            it.first
-        }
 
-        println(roads.sortedBy { it.first() })
-
-        return answer
+        return 1
     }
 
     solution(
-        lines[0].toInt(),
-        lines[1].removeSurrounding("[[", "]]").split("], [").map { itt ->
-            itt.removeSurrounding("[", "]").split(", ").map { it.toInt() }.toIntArray()
-        }.toTypedArray(),
-        lines[2].removeSurrounding("[", "]").split(", ").map { it.toInt() }.toIntArray(),
-        lines[3].toInt(),
+        lines[0].removeSurrounding("[", "]").split(", ").toTypedArray()
     ).also { print(it) }
     println()
 }
