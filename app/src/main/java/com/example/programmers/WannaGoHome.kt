@@ -1,6 +1,8 @@
-package com.example.kotlinalgorithm
+package com.example.programmers
 
-import java.io.*
+import java.io.BufferedReader
+import java.io.File
+import java.io.FileReader
 
 fun main() {
     val inputFile = File("app/src/main/java/com/example/kotlinalgorithm/input.txt")
@@ -28,6 +30,9 @@ fun main() {
         }
         print(curTime)
     }
+
+    //input
+//    3 2, 2 1, 8 3, 5 7
 
     solution(
         lines[0].split(", ").toTypedArray()
