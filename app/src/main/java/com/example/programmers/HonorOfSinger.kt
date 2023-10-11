@@ -14,12 +14,9 @@ fun main() {
         var answer: IntArray = intArrayOf()
         val sList = mutableListOf<Int>()
         score.forEach {
-            if (sList.size == 0) sList.add(it)
-            if (sList.last() < it) {
-                if (sList.size == k) sList.removeLast()
-                sList.add(it)
-                sList.sortDescending()
-            }
+            if (sList.size < k) sList.add(it)
+            else if (sList.last() < it) sList[k - 1] = it
+            sList.sortDescending()
             answer += sList.last()
         }
         return answer
