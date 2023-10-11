@@ -1,8 +1,8 @@
-package com.example.kotlinalgorithm
+package com.example.programmers
 
-import java.io.*
-import java.text.SimpleDateFormat
-import java.util.Calendar
+import java.io.BufferedReader
+import java.io.File
+import java.io.FileReader
 
 fun main() {
     val inputFile = File("app/src/main/java/com/example/kotlinalgorithm/input.txt")
