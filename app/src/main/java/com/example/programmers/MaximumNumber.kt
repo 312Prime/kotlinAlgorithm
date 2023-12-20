@@ -1,4 +1,4 @@
-package com.example.kotlinalgorithm
+package com.example.programmers
 
 import java.io.BufferedReader
 import java.io.File
