@@ -1,3 +1,2 @@
-"banana", "apple", "rice", "pork", "pot"
-3, 2, 2, 2, 1
-"apple", "banana", "rice", "apple", "pork", "banana", "pork", "rice", "pot", "banana", "apple", "banana", "chicken", "apple"
+1,2],[2,3
+3,4],[5,6
