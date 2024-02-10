@@ -1,9 +1,8 @@
-package com.example.kotlinalgorithm
+package com.example.programmers
 
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileReader
-
 
 fun main() {
     val inputFile = File("app/src/main/java/com/example/kotlinalgorithm/input.txt")
@@ -13,7 +12,6 @@ fun main() {
 
     fun main(args: Array<String>) = println(readLine()!!)
 
-    main(
-    ).also { print(it) }
-    println()
+//    main().also { print(it) }
+//    println()
 }
