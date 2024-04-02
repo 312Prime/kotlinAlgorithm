@@ -10,7 +10,7 @@ fun main() {
     val lines = mutableListOf<String>()
     BufferedReader(FileReader(inputFile)).lines().forEach { lines.add(it) }
 
-    fun solution(num: Int): String = if (num % 2 == 1) "Odd" else "Even"
+    fun solution(num: Int): String = if (num % 2 == 0) "Even" else "Odd"
 
     solution(
         lines[0].toInt(),
